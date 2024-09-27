@@ -5,6 +5,8 @@ import CustomDropDown from "./CustomDropDown";
 import { Button, Paper, Typography, createStyles, makeStyles } from "@material-ui/core";
 import { TaskType, fetchTaskTypes } from "../api/taskTypes/taskTypes";
 import { Task, saveTask } from "../api/taskTypes/tasks";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const useStyles = makeStyles(() => createStyles({
     form: {
@@ -42,9 +44,14 @@ const Form = () => {
         setValues({ ...task, [event.target.name]: event.target.value });
     }
 
+    const notify = () => {
+        toast("Submitted");
+    };
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         saveTask(task);
+        notify();
     }
     const [taskTypes, setTaskTypes] = useState<TaskType[]>([]);
 

@@ -1,10 +1,12 @@
 import React from 'react';
-import Home from './home/home';
 import Form from './components/Form';
+import { ToastContainer } from 'react-toastify';
 
 export default function App() {
   return (
-      <div><Form/></div>
+      <div><Form/>
+      <ToastContainer />
+      </div>
   );
 }
 
